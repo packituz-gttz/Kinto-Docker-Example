@@ -1,0 +1,12 @@
+db:
+  extends:
+    file: ../default/docker-compose.yml
+    service: db
+web:
+  image: kinto/kinto-server
+  links:
+   - db
+  ports:
+   - "8888:8888"
+  volumes:
+    - ./config:/etc/kinto

@@ -1,0 +1,13 @@
+db:
+  image: postgres
+  environment:
+    POSTGRES_USER: testuser
+    POSTGRES_PASSWORD: 1234567
+web:
+  image: kinto/kinto-server
+  links:
+   - db
+  ports:
+   - "8888:8888"
+  volumes:
+    - ./config:/etc/kinto
